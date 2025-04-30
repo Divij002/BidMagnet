@@ -37,6 +37,10 @@ io.on("connection", (socket) => {
 // Attach io to app instance so it can be accessed via req.app.get("io")
 app.set("io", io);
 
+app.get("/", (req,res) => {
+  res.json(`BidMagnet Server running on ${process.env.PORT || 8000}`);
+});
+
 // Connect DB and start server
 connectDB()
   .then(() => {
