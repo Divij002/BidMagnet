@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import BidOfferModal from "../components/BidOfferModal";
 import { io } from "socket.io-client";
 
-const socket = io("http://localhost:8000");
+const socket = io(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}`);
 
 function OrderBookPage() {
   const { symbol } = useParams();
@@ -28,7 +28,7 @@ function OrderBookPage() {
 
   const fetchOrderBook = async () => {
     try {
-      const response = await axios.get(`http://localhost:8000/api/v1/stocks/order/${symbol}`);
+      const response = await axios.get(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/v1/stocks/order/${symbol}`);
       const data = response.data;
 
       const topLevels = [];

@@ -30,7 +30,7 @@ function BidOfferModal({ closeModal, symbol, type }) {
     console.log("Submitting bid with token:", user?.token);
 
     try {
-      await axios.post("http://localhost:8000/api/v1/stocks/order/new", payload, {
+      await axios.post(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/v1/stocks/order/new`, payload, {
         headers: { Authorization: `Bearer ${user.token}` },
         withCredentials: true
       });
