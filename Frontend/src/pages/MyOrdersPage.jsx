@@ -17,7 +17,7 @@ function MyOrdersPage() {
 
   const fetchOrders = async () => {
     try {
-      const response = await axios.get("http://localhost:8000/api/v1/stocks/order/getMyOrders", {
+      const response = await axios.get(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/v1/stocks/order/getMyOrders`, {
         headers: { Authorization: `Bearer ${user.token}` },
       });
       if (response && !isEmpty(response.data) && response.data.orders) {
@@ -30,7 +30,7 @@ function MyOrdersPage() {
 
   const deleteOrder = async (orderId, symbol) => {
     try {
-      await axios.post("http://localhost:8000/api/v1/stocks/order/cancel", {
+      await axios.post(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/v1/stocks/order/cancel`, {
         orderId,
         symbol,
       });
@@ -45,7 +45,7 @@ function MyOrdersPage() {
     if (!newQuantity) return;
 
     try {
-      await axios.post("http://localhost:8000/api/v1/stocks/order/modify", {
+      await axios.post(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/v1/stocks/order/modify`, {
         orderId,
         newQuantity: parseInt(newQuantity),
         symbol,

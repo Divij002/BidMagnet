@@ -14,7 +14,7 @@ function SignUp() {
     setError("");
 
     try {
-      await axios.post("http://localhost:8000/api/v1/users/register", {
+      await axios.post(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/v1/users/register`, {
         name,
         email,
         password,
