@@ -38,7 +38,7 @@ io.on("connection", (socket) => {
 app.set("io", io);
 
 app.get("/", (req,res) => {
-  res.json(`BidMagnet Server running on ${process.env.PORT || 8000}`);
+  res.json("BidMagnet Server");
 });
 
 // Connect DB and start server
